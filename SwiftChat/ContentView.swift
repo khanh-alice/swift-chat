@@ -168,7 +168,10 @@ struct ContentView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                         )
-                        .onChange(of: clearTriggered) { _, _ in
+                        .onAppear {
+                            clear()
+                        }
+                        .onChange(of: clearTriggered) { _ in
                             clear()
                         }
                 }
@@ -252,7 +255,7 @@ struct ContentView: View {
         .onAppear {
             modelDidChange()
         }
-        .onChange(of: modelURL) {
+        .onChange(of: modelURL) { _ in
             modelDidChange()
         }
     }
